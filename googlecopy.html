@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Copy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #202124;
+        }
+        div.search-bar {
+            box-shadow: none;
+            display: flex;
+            justify-content: space-between;
+            width: 40%;
+            height: 45px;
+            border-radius: 30px;
+            border-style: solid;
+            border-color: #5f6368;
+            border-width: 1px;
+            margin-left: calc(29% + 5px);
+            margin-top: 1%;
+        }
+        input.search-bar {
+            margin-right: 80px;
+            width: 70%;
+            height: 40px;
+            border-color: transparent;
+            margin-left: 10px;
+            font-size: 16px;
+            border-width: 1px;
+            background-color: transparent;
+            color: white;
+        }
+        img.logo {
+            width: 272px;
+            margin-left: calc(39% + 15px);
+            margin-top: 13%;
+            height: 92px;
+        }
+        img.mic {
+            margin-top: 7px;
+            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+        }
+
+        button.bbutton1 {
+            margin-top: 2%;
+            margin-left: calc(40% - 5px);
+            border-color: transparent;
+            border-radius: 5px;
+            width: 130px;
+            height: 36px;
+            background-color: #303134;
+            color: white;
+            border-width: 2px;
+            font-family: arial, sans-serif;
+            font-size: 14px;
+        }
+
+        button.bbutton2 {
+            margin-left: 1%;
+            margin-top: 2%;
+            border-color: transparent;
+            border-radius: 5px;
+            border-width: 2px;
+            width: 130px;
+            height: 36px;
+            background-color: #303134;
+            color: white;
+            font-family: arial, sans-serif;
+            font-size: 14px;
+        }
+
+        button.ldmode {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            border-color: transparent;
+            border-radius: 5px;
+            border-width: 2px;
+            width: 130px;
+            height: 36px;
+            background-color: #303134;
+            color: white;
+            font-family: arial, sans-serif;
+            font-size: 14px;
+        }
+
+        input:focus, textarea:focus, select:focus{
+            outline: none;
+        }
+        .fa-search {
+            outline: none;
+            margin-left: 15px;
+            color: #9aa0a6;
+            margin-top: 14px;
+            margin-left: 18px;
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" id="logo" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png">
+    <div class="search-bar" id="search-bar-div">
+        <i class="fa fa-search"></i>
+        <input id="search-bar" class="search-bar" type="text">
+        <img class="mic" src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-25-1024.png">
+    </div>
+
+    <button class="bbutton1" id="bbutton1">Google Search</button>
+    <button class="bbutton2" id="bbutton2">I'm Feeling Lucky</button>
+    <button class="ldmode" id="ldmode">Light Mode</button>
+
+    <script type="text/javascript">
+        var dmode = true;
+        $(function() {
+            $(this).find('input').keypress(function (e) {
+                if (e.which == 10 || e.which == 13) {
+                    if (!(document.getElementById("search-bar").value === "")) {
+                        window.location.href = "https://www.google.com/search?q="+document.getElementById("search-bar").value
+                    }
+                }
+            });
+        });
+
+        $("button").hover(function(){
+            if (dmode == true) {
+                $(this).css("border-color", "#767676");
+            } else {
+                $(this).css("border-color", "#e6e7ea");
+            }
+        }, function(){
+            $(this).css("border-color", "transparent");
+        });
+
+        $("div").hover(function(){
+            if (dmode == true) {
+                $(this).css("background-color", "#2e2f31");
+            } else {
+                $(this).css("box-shadow", "0 1px 6px rgb(32 33 36 / 28%)");
+            }
+        }, function(){
+            if (dmode != true) {
+                $(this).css("border-color", "#e6e7ea");
+                $(this).css("box-shadow", "none");
+            } else {
+                $(this).css("background-color", "transparent");
+            }
+        });
+
+        document.getElementById('ldmode').onclick = function() {
+            if (dmode == true) {
+                document.getElementById("logo").src = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
+                document.getElementById("ldmode").style.backgroundColor = "#f8f9fa"
+                document.getElementById("bbutton1").style.backgroundColor = "#f8f9fa"
+                document.getElementById("bbutton2").style.backgroundColor = "#f8f9fa"
+                document.getElementById("ldmode").style.color = "#3c4043"
+                document.getElementById("bbutton1").style.color = "#3c4043"
+                document.getElementById("bbutton2").style.color = "#3c4043"
+                document.getElementById("ldmode").textContent = "Dark Mode"
+                document.getElementById("search-bar-div").style.borderColor = "#e6e7ea"
+                document.getElementById("search-bar").style.color = "black"
+                document.body.style.backgroundColor = "#ffffff"
+                dmode = false;
+            } else {
+                location.reload()
+            }
+        };
+
+        document.getElementById('bbutton2').onclick = function() {
+            alert("This function is not available yet!");
+        };
+    </script>
+</body>
+</html>
